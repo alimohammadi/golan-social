@@ -1,10 +1,14 @@
 package main
 
-import "log"
+import (
+	"log"
+
+	"github.com/alimohammadi/golan-social.git/internal/env"
+)
 
 func main() {
 	cfg := config{
-		addr: ":8080",
+		addr: env.GetString("ADDR", ":8081"),
 	}
 
 	app := &application{
