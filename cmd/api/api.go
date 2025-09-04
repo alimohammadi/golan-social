@@ -13,10 +13,19 @@ import (
 type application struct {
 	config config
 	store  store.Storage
+	db     dbConfing
+}
+
+type dbConfing struct {
+	addr         string
+	maxOpenConns int
+	maxIdleConns int
+	maxIdleTime  string
 }
 
 type config struct {
 	addr string
+	db   dbConfing
 }
 
 func (app *application) mount() *chi.Mux {
